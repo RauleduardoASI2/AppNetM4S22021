@@ -1,0 +1,52 @@
+﻿@using AppNetM4S22021.Shared
+@inject HttpClient http
+@inject IRepositorio repositorio
+@inject NavigationManager navigationManager
+
+<EditForm Model="@maestrosCls" OnValidSubmit="GuardarDatos">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    @if (maestrosCls.MaestroId != 0)
+    {
+        <div class="form-group">
+            <label>Id Maestro</label>
+            <input class="form-control" readonly type="number" @bind="maestrosCls.MaestroId" />
+        </div>
+    }
+
+    <div class="form-group">
+        <label>Ingrese nombre del Maestro</label>
+        <InputText class="form-check form-control"
+                   @bind-Value="maestrosCls.Nombre" />
+    </div>
+
+    <input type="submit" value="Guardar" class="btn btn-primary" />
+    <NavLink href="/ListaMaestros">
+        <input type="button" value="Regresar" class="btn btn-danger" />
+    </NavLink>
+</EditForm>
+
+
+@code {
+   [Parameter]
+    public MaestrosCls maestrosCls { get; set; } = new MaestrosCls();
+    public async Task GuardarDatos()
+    {
+
+        var response = await repositorio.Post("api/Maestro/Guardar", maestrosCls);
+        if (response.Error)
+        {
+            var body = await response.HttpResponseMessage.Content.ReadAsStringAsync();
+            Console.WriteLine(body);
+        }
+        else
+        {
+            navigationManager.NavigateTo("/ListaMaestros");
+        }
+
+    }
+
+
+
+
+}

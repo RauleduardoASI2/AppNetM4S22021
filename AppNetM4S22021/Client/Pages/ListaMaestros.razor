@@ -1,0 +1,53 @@
+﻿@page "/ListaMaestros"
+@using AppNetM4S22021.Shared
+@inject HttpClient http
+
+
+
+@code{
+    string[] cabecerasTabla = { "Id", "Nombre", "Opciones" };
+}
+<div class="@tipoMsg">
+    @msg
+</div>
+<Lista cabeceras=cabecerasTabla
+       lista=listaMaestros
+       eventEliminar="EliminarDatos"
+       eventBusqueda="BusquedaMaestros"
+       rtaAgregar="agregarMaestros"
+       rtaEditar="editarMaestro" />
+
+@code {
+    private string tipoMsg = "", msg = "";
+    private MaestrosCls[] listaMaestros;
+
+    protected override async Task OnInitializedAsync()
+    {
+        listaMaestros = await http.GetFromJsonAsync<MaestrosCls[]>("api/Maestros/Get");
+    }
+
+    public async Task BusquedaMaestros(string data)
+    {
+        tipoMsg = ""; msg = "";
+        listaMaestros = await http.GetFromJsonAsync<MaestrosCls[]>("api/Maestro/Filtrar/" + data);
+
+    }
+
+    public async Task EliminarDatos(string data)
+    {
+        int respuesta = await http.GetFromJsonAsync<int>("api/Maestro/EliminarMaestro/" + data);
+        if (respuesta == 1)
+        {
+            data = "";
+            listaMaestros = await http.GetFromJsonAsync<MaestrosCls[]>("api/Maestro/Filtrar/" + data);
+            tipoMsg = "alert alert-primary";
+            msg = "Grado eliminado con exito";
+        }
+        else
+        {
+            tipoMsg = "alert alert-danger";
+            msg = "Accion no pudo procesarse, es posible que el cliente ya cuente con registros";
+        }
+    }
+
+}

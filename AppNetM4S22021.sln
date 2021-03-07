@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNetM4S22021.Server", "AppNetM4S22021\Server\AppNetM4S22021.Server.csproj", "{01BF2D17-4220-4B32-9540-A1B15E9902DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppNetM4S22021.Server", "AppNetM4S22021\Server\AppNetM4S22021.Server.csproj", "{01BF2D17-4220-4B32-9540-A1B15E9902DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNetM4S22021.Client", "AppNetM4S22021\Client\AppNetM4S22021.Client.csproj", "{AFE4D0D0-0470-4717-92C6-A9D607E2E49A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppNetM4S22021.Client", "AppNetM4S22021\Client\AppNetM4S22021.Client.csproj", "{AFE4D0D0-0470-4717-92C6-A9D607E2E49A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNetM4S22021.Shared", "AppNetM4S22021\Shared\AppNetM4S22021.Shared.csproj", "{F2045115-5975-4565-81E4-3E2B18FBD975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppNetM4S22021.Shared", "AppNetM4S22021\Shared\AppNetM4S22021.Shared.csproj", "{F2045115-5975-4565-81E4-3E2B18FBD975}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

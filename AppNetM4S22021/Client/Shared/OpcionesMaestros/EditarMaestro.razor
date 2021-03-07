@@ -1,0 +1,17 @@
+﻿@page "/editarMaestro/{Id}"
+@using AppNetM4S22021.Shared
+@inject HttpClient http;
+<h1>Editar</h1>
+
+<FormularioMaestros maestrosCls=maestrosCls />
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public MaestrosCls maestrosCls = new MaestrosCls();
+    protected async override Task OnParametersSetAsync()
+    {
+        maestrosCls = await http.GetFromJsonAsync<MaestrosCls>("api/Maestro/obtenerMaestro/" + Id);
+    }
+}
